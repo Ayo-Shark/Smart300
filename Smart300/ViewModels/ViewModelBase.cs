@@ -1,7 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System.ComponentModel;
 
 namespace Smart300.ViewModels;
 
-public abstract class ViewModelBase : ObservableObject
+public class ViewModelBase : ObservableObject
 {
+
 }

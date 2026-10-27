@@ -1,16 +1,46 @@
-<UserControl xmlns="https://github.com/avaloniaui"
+﻿<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:Smart300.ViewModels"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Smart300.Views.MainView"
-             x:DataType="vm:MainViewModel">
-  <Design.DataContext>
-    <!-- This only sets the DataContext for the previewer in an IDE,
-         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-    <vm:MainViewModel />
-  </Design.DataContext>
+             x:CompileBindings="False"
+             x:Class="Smart300.Views.MainView">
+             
+    <Design.DataContext>
+        <vm:AuthViewModel />
+    </Design.DataContext>
 
-  <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <!-- ИЗМЕНЕНИЕ 1: Auto вместо * для корректного размера на телефоне -->
+    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+          HorizontalAlignment="Center" 
+          VerticalAlignment="Center"
+          RowSpacing="15"
+          MinWidth="280">
+          
+        <TextBlock Text="{Binding Title}"
+                   FontSize="32"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,20"/>
+                   
+        <!-- ИЗМЕНЕНИЕ 2: UpdateSourceTrigger=PropertyChanged для мгновенной реакции -->
+        <TextBox Grid.Row="1" 
+                 Watermark="Логин"
+                 Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
+                 
+        <TextBox Grid.Row="2" 
+                 Watermark="Пароль"
+                 Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"/>
+                 
+        <Button Grid.Row="3" 
+                VerticalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                HorizontalAlignment="Stretch"
+                Command="{Binding LoginCommand}"
+                Content="Войти" />
+                
+        <TextBlock Grid.Row="4"
+                   Text="{Binding ErrorMessage}" 
+                   Foreground="Red" 
+                   TextWrapping="Wrap"
+                   HorizontalAlignment="Center"/>
+    </Grid>
 </UserControl>
