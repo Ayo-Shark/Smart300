@@ -12,17 +12,17 @@
     <PackageVersion Include="Avalonia.iOS" Version="11.3.0" />
     <PackageVersion Include="Avalonia.Browser" Version="11.3.0" />
     <PackageVersion Include="Avalonia.Android" Version="11.3.0" />
-    
     <!-- Other packages -->
     <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-    
     <!-- Entity Framework Core - ВСЕ версии должны быть одинаковые! -->
     <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="8.0.13" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.13" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.13" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.13" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration" Version="10.0.14" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.FileExtensions" Version="10.0.14" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Json" Version="10.0.14" />
     <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.10" />
-    
     <PackageVersion Include="Xamarin.AndroidX.Core.SplashScreen" Version="1.0.1.15" />
   </ItemGroup>
 </Project>

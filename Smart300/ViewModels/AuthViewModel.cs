@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using Smart300.Context;
 using Smart300.Models;
 using System;
-using System.Diagnostics; // <-- ДОБАВЬТЕ ЭТО
 using System.Threading.Tasks;
 
 namespace Smart300.ViewModels
@@ -25,36 +24,29 @@ namespace Smart300.ViewModels
 
         [ObservableProperty]
         private string _errorMessage = string.Empty;
-
+        
         [RelayCommand]
         private async Task LoginAsync()
         {
-            // "Детектор лжи": мы увидим это в окне "Вывод" в Visual Studio
-            Debug.WriteLine($">>> КНОПКА НАЖАТА! Email='{Email}', Пароль='{Password}'");
-
             if (string.IsNullOrWhiteSpace(Email) || string.IsNullOrWhiteSpace(Password))
             {
                 ErrorMessage = "Пожалуйста, заполните логин и пароль";
-                Debug.WriteLine(">>> Ошибка: поля пустые");
-                return;
+                return; 
             }
 
             IsLoading = true;
-            ErrorMessage = string.Empty;
+            ErrorMessage = string.Empty; 
 
             try
             {
-                Debug.WriteLine(">>> Запрос к базе данных...");
                 using var context = new SmartServiceContext();
 
-                var user = await context.Users
-                    .FirstOrDefaultAsync(u => u.Email == Email && u.Password == Password);
+                var user = await context.Users.FirstOrDefaultAsync(u => u.Email == Email && u.Password == Password);
 
                 if (user != null)
                 {
                     ErrorMessage = "Успешный вход!";
                     Title = "Добро пожаловать!";
-                    Debug.WriteLine(">>> Успех!");
                 }
                 else
                 {
@@ -65,7 +57,6 @@ namespace Smart300.ViewModels
             {
                 ErrorMessage = ex.Message;
                 Title = "Ошибка";
-                Debug.WriteLine($">>> Исключение: {ex.Message}");
             }
             finally
             {

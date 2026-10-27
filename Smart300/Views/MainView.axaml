@@ -8,7 +8,6 @@
         <vm:AuthViewModel />
     </Design.DataContext>
 
-    <!-- ИЗМЕНЕНИЕ 1: Auto вместо * для корректного размера на телефоне -->
     <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto"
           HorizontalAlignment="Center" 
           VerticalAlignment="Center"
@@ -21,7 +20,6 @@
                    HorizontalAlignment="Center"
                    Margin="0,0,0,20"/>
                    
-        <!-- ИЗМЕНЕНИЕ 2: UpdateSourceTrigger=PropertyChanged для мгновенной реакции -->
         <TextBox Grid.Row="1" 
                  Watermark="Логин"
                  Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>

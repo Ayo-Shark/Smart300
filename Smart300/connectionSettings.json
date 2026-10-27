@@ -1,0 +1,5 @@
+﻿{
+  "ConnectionStrings": {
+    "DefaultConnection": "Host=;Port=5432;Database=postgres;Username=;Password=;SSL Mode=Require;Trust Server Certificate=true"
+  }
+}
